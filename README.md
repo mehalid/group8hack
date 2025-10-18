@@ -1,7 +1,7 @@
 <img src="pics/solar_panels.jpg" width="100%">
 
 # 🎱 Team Ate - Six Sigma Hackathon
-- 👥 **Group members:** Mehali Desai, Andrew Lin, Adhyan Prasad, Jennie Redrovan and Aleira Sanchez
+👥 **Group members:** Mehali Desai, Andrew Lin, Adhyan Prasad, Jennie Redrovan and Aleira Sanchez
 
 # Our Tool 💡🔋
 ## Introduction
@@ -40,3 +40,16 @@ The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a
 4.  **Run Core Statistics Function**: Execute [`statistics.R`](./R/statistics.R) to compute summary statistics and generate key distribution plots (including the CDF, PDF, and survival probability curves).
 5.  **Compile All Results into an HTML Report**: Use [`pdf_function.R`](./R/pdf_function.R) to aggregate all data and plots from the previous steps and arrange them into a structured HTML.
 6.  **Export Final HTML Report**: Return to the [`runMe.R`](./R/runMe.R) script and run the last piece of code to generate and export the final HTML report containing all graphs, metrics, and analyses. Open up your report which can be found in the project folder.
+
+## Output
+The final deliverable is a **comprehensive HTML website**  that includes:
+- Control chart for efficiency monitoring
+- Lifespan distribution and survival probability analysis
+- Failure frequency visualization
+- Cost analysis insights
+- Key takeaways and recommendations for NYSERD
+
+## Sources 
+In order to create this tool, we used a variety of sources:
+- ChatGPT
+- Tim Fraser's Online Textbook
