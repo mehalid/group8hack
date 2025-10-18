@@ -49,7 +49,7 @@ The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a
 
 1.  **Generate the Dataset**  
    Upload your datasheet (in the same format as the provided codebook).  
-   - To generate sample data, run [`make_datasheet.R`](./R/make_datasheet.R).  
+      - To generate sample data, run [`make_datasheet.R`](./R/make_datasheet.R).  
 
 2.  **Generate Control Charts**  
    Run [`SPC.R`](./R/SPC.R) to create control charts showing panel efficiency trends.  
