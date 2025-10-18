@@ -48,8 +48,9 @@ As consulting analysts for the **New York State Energy Research & Development Au
 The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a tutorial that reproduces the analysis and generates the final report.  
 
 1.  **Generate the Dataset**  
-   Upload your datasheet (in the same format as the provided codebook).  
-      - To generate sample data, run [`make_datasheet.R`](./R/make_datasheet.R).  
+   Upload your datasheet (in the same format as the provided codebook)  
+      - To generate sample data, run [`make_datasheet.R`](./R/make_datasheet.R).
+      - If you are providing numbers for maintenance costs, change the varaibles outlined in [`runMe.R`](./R/runMe.R) to reflect your cost per panel
 
 2.  **Generate Control Charts**  
    Run [`SPC.R`](./R/SPC.R) to create control charts showing panel efficiency trends.  
@@ -58,14 +59,17 @@ The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a
    Run [`Bargraph.R`](./R/Bargraph.R) to generate a bar plot of failure frequencies and types.  
 
 4.  **Run Core Statistics Function**  
-   Execute [`statistics.R`](./R/statistics.R) to calculate summary statistics and plot lifespan distributions (CDF, PDF, survival).  
+   Execute [`statistics.R`](./R/statistics.R) to calculate summary statistics and plot lifespan distributions (CDF, PDF, survival).
 
-5.  **Compile All Results**  
+5. **Run Costs Function**  
+   Execute [`cost_function2.R`](./R/cost_function2.R) to calculate the total costs per panel including maintenance effort.
+
+6.  **Compile All Results**  
    Use [`pdf_function.R`](./R/pdf_function.R) to merge all outputs into an organized HTML report.  
 
-6.  **Export Final HTML Report**  
-   Return to [`runMe.R`](./R/runMe.R) and run the final code block to generate your comprehensive report.  
-   The final HTML file will appear in your project folder.  
+7.  **Export Final HTML Report**  
+   Return to [`generate_report.R`](./R/generate_report.R) and run the final code block to generate your comprehensive report. [`generate_report.R`](./R/generate_report.R) generates your HTML file.  
+   The final HTML file will appear in your project folder.
 
 ---
 
