@@ -1,6 +1,6 @@
 <img src="pics/solar_panels.jpg" width="100%">
 
-# ☀️ Team Ate — Six Sigma Hackathon  
+# 🎱 Team Ate — Six Sigma Hackathon  
 
 👥 **Group Members:** Mehali Desai · Andrew Lin · Adhyan Prasad · Jennie Redrovan · Aleira Sanchez
 
