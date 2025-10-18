@@ -85,38 +85,39 @@ build_narrative_plot <- function(stats, var, bar) {
   surv25 <- 100 * exp(-lambda_yr * 25)
 
   
+  
+  
   # --- Add slope message if slope data provided ---
   slope_msg <- ""
   if (!is.null(var) && "slope" %in% names(var)) {
     if (sign(var$slope) == -1) {
-      slope_msg <- "The slope of the control chart indicates a decreasing trend, suggesting decreasing efficiency over time.\n"
+      slope_msg <- "The control chart has a gradual decline or negative slope, suggesting decreasing average efficiency amongst the solar panels over time."
     } else if (sign(var$slope) == 1) {
-      slope_msg <- "The slope of the control chart indicates an increasing trend, suggesting improving efficiency over time.\n"
+      slope_msg <- "The control chart has a gradual incline or positive slope, suggesting increasing average efficiency amongst the solar panels over time."
     } else {
-      slope_msg <- "The slope of the control chart indicates a neutral trend with no significant change in efficiency.\n"
+      slope_msg <- "The control chart has a neutral trend, suggesting no significant change in efficiency."
     }
   }
   
   bar_msg <- ""
   if (!is.null(bar) && "top_failure_type" %in% names(bar)) {
     if (bar$top_failure_type == "Wiring") {
-      bar_msg <- "Most of your failures are due to wiring issues. Contact electricians.\n"
+      bar_msg <- " Most of your failures are due to wiring issues. We recommend prioritizing electrical inspections and maintenance to prevent these failures."
     } else if (bar$top_failure_type== "Crack") {
-      bar_msg <- "Most of your failures are due to cracking issues. Replace part and contact panel supplier.\n"
+      bar_msg <- " Most of your failures are due to cracking issues. We recommend replacing the part and contacting the panel supplier."
     } else if (bar$top_failure_type == "Wear") {
-      bar_msg <- "Most of your failures are due to wear issues. Contact a maintenance crew .\n"
+      bar_msg <- " Most of your failures are due to wear issues. We recommend contacting a maintenance crew."
     } else if (bar$top_failure_type == "Delamination") {
-      bar_msg <- "Most of your failures are due to Delamination issues. Replace part and contact panel supplier.\n"
+      bar_msg <- " Most of your failures are due to Delamination issues. We recommend replacing the part and consulting with the panel supplier."
     }
   }
   
   
   text <- paste0(
-    "\n\n Reliability was modeled using an exponential lifetime distribution.\n",
-    "Estimated MTTF =", sprintf("%.1f", mttf_years), " years.",
-    "Based on ", n_total, " panels and ", n_failed, " observed failures, the expected survival rate is ",
-    sprintf("%.1f", surv10), "% after 10 years and ", sprintf("%.1f", surv25),
-    "% after 25 years.",
+    "\nThe solar panel farm's reliability was modeled using an exponential lifetime distribution,",
+    " where the estimated mean time to failure was ", sprintf("%.1f", mttf_years), " years",
+    " based on ", n_total, " panels and ", n_failed, " observed failures. The model predicts that the expected survival rate is ",
+    sprintf("%.1f", surv10), "% after 10 years and ", sprintf("%.1f", surv25), "% after 25 years.",
     slope_msg,
     bar_msg
   )
@@ -185,3 +186,4 @@ write_single_page_report <- function(stats, u_plot, bar,
   message(sprintf("Saved: %s", normalizePath(out_pdf)))
   
 }
+

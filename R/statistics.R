@@ -138,3 +138,4 @@ curve_df <- tibble::tibble(
 # 
 # # arrange
 # ggpubr::ggarrange(p_pdf, p_cdf, p_surv, ncol = 3, labels = c("A","B","C"))
+

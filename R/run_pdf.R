@@ -7,3 +7,4 @@
 write_single_page_report(stats, var$plot, bar,
                          out_pdf = "SolarPanel_ReliabilityReport.pdf",
                          warranty_years = 25)
+
