@@ -6,9 +6,6 @@
 #' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
 #' @export
 
-StatisticalProcessTest <- function (input1, input2, input3)
-
-
 #Control Plot functions
 #Outputs: the control plot and the slope of the plot
 
