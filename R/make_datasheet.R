@@ -32,6 +32,8 @@ generate_farm_data <- function(farm_id, mean_life, sd_life, fail_type_probs, mai
   cutoff_date <- as.Date("2025-01-01")
   df$event <- ifelse(df$failure_date <= cutoff_date, 1, 0)
   df$failure_date[df$failure_date > cutoff_date] <- NA
+  df$n_maintenances <- pmax(1,floor(as.numeric(pmin(cutoff_date, df$failure_date, na.rm=TRUE)- df$install_date)/maint_delay_mean))
+  df$avg_maint_freq_days <- maint_delay_mean + rnorm(n_panels,0,maint_delay_mean*0.1) 
   
   return(df)
 }
