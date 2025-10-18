@@ -36,7 +36,7 @@ The project focuses on the following key objectives:
 The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a tutorial that reproduces the analysis and generates the final report.
 1.  **Generate the Dataset**: Upload your datasheet to the repository. Make sure to *use the same format as the codebook* to ensure proper usage of the tool. For the purposes of this hackathon, a sample dataset function has been provided to generate two test datasets. If this is the case, run the [`make_datasheet.R`](./R/make_datasheet.R) script to create and load the working datasets.
 2.  **Generate Control Charts**: Run [`SPC.R`](./R/SPC.R) to create an average control chart that visualizes changes in panel efficiency over time. 
-3.  **Visualize Failure Types**: Run [`BarGraph.R`](./R/BarGraph.R) to generate a bar graph showing the most common types and frequencies of panel failures.
+3.  **Visualize Failure Types**: Run [`Bargraph.R`](./R/Bargraph.R) to generate a bar graph showing the most common types and frequencies of panel failures.
 4.  **Run Core Statistics Function**: Execute [`statistics.R`](./R/statistics.R) to compute summary statistics and generate key distribution plots (including the CDF, PDF, and survival probability curves).
 5.  **Compile All Results into an HTML Report**: Use [`pdf_function.R`](./R/pdf_function.R) to aggregate all data and plots from the previous steps and arrange them into a structured HTML.
 6.  **Export Final HTML Report**: Return to the [`runMe.R`](./R/runMe.R) script and run the last piece of code to generate and export the final HTML report containing all graphs, metrics, and analyses. Open up your report which can be found in the project folder.
