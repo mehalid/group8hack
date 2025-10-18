@@ -6,7 +6,9 @@
 # Our Tool 💡🔋
 ## Introduction
 This repository provides a data analysis and visualization tool designed to address the following prompt:
+
     *Utility-scale solar power plants are found all throughout New York State, due to significant promotion policies over the last decade. Utility-scale solar can be made up of hundreds or even thousands of solar panels, each of which requires routine maintenance. Your team has been commissioned by the New York State Energy Research & Development Authority (NYSERDA), whose staff hope to better understand the lifespan remaining for existing utility-scale solar farms. Design a quality control system to track and mitigate solar panel failure.*
+
 This project builds a **quality control and reliability assessment framework for solar panels**, combining statistical process control, failure analysis, and lifespan modeling.
 
 ## Scope
