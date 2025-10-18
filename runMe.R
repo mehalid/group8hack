@@ -1,10 +1,33 @@
-# Step 0:
+# Step 0: 
 # Run codebook creation function to view codebook for subsequency data creation
 source("R/create_codebook.R")
 codebook_list = create_codebook()
 
-#Step 1: Load Datasheet - for our case we run a function to create the dataset
-#Run make_datsheet.R to load the dataset
+
+#Step 1: Load or simulate datasheet and provide numbers for maintanance costs
+# If simulating, run make_datasheet.R to create the dataset and change the value
+# of the commented field below
+# If loading own dataset, edit the line below
+data_set="panel_life_NY002.csv"
+
+# Adjust the following to accurately reflect your cost per panel for routine
+# maintanance as well as failure modes/cost per failure mode
+#Cost to fix a wiring issue
+wiring_cost=180+600
+#Cost to fix a crack issue
+crack_cost=350+600
+#Cost to fix a wear issue
+wear_cost=120+600
+#Cost to fix a Delamination issue
+Delamination_cost=420+600
+#Cost for a routine maintence
+routine_maintence_cost=300
+
+issue_costs <- tibble::tibble(
+  issue = c("Wiring", "Crack", "Wear", "Delamination"),
+  unit_cost = c(wiring_cost, crack_cost, wear_cost, Delamination_cost)
+)
+
 
 #Step 2: Upload functions: SPC.R, Bargraph.R, pdf_function.R
 
@@ -51,7 +74,7 @@ write.csv(telemetry_bad, "panel_telemetry_NY002.csv", row.names = FALSE)
 cat("Saved panel_life_NY001.csv, panel_life_NY002.csv, panel_telemetry_NY001.csv, and panel_telemetry_NY002.csv\n")
 
 source("R/SPC.R")
-var = StatisticalProcessTest(telemetry_normal$actual_output_kW[1:1000],telemetry_normal$expected_output_kW[1:1000],telemetry_normal$timestep[1:1000])
+var = StatisticalProcessTest(telemetry_bad$actual_output_kW[1:1000],telemetry_bad$expected_output_kW[1:1000],telemetry_bad$timestep[1:1000])
 var$plot
 #var$slope
 
@@ -64,16 +87,26 @@ stats <- panel_stats("panel_life_NY001.csv",
                      failure_col = "failure_date",
                      horizons = c(365, 730, 1825))  # 1, 2, and 5 years
 
+# Step ___: Maintenance efforts v.s. total cost per panel
+source("R/cost_function2.R")
+# Compute costs
+cost_output <- compute_panel_costs2(
+  data = data_set,
+  issue_costs = issue_costs,
+  issue_col = "failure_type",
+  id_col = "panel_id",
+  install_col = "install_date",
+  visits_col = "n_maintenances",        # or "num_of_visits" depending on dataset
+  # routine_cost_per_visit = routine_maintenance_cost,
+  routine_cost_per_visit = 300,
+  as_of = Sys.Date()
+)
+
 
 source("R/pdf_function.R")
 source("R/generate_report.R")
 generate_solar_report(stats, bar$plot, var$plot)
-# source("R/pdf_function.R")
-# 
-# 
-# write_single_page_report(stats, var$plot, bar,
-#                          out_pdf = "SolarPanel_ReliabilityReport.pdf",
-#                          warranty_years = 25)
+
 
 
 
