@@ -22,11 +22,11 @@ As consulting analysts for the **New York State Energy Research & Development Au
 
 ## Core Objectives
 The project focuses on the following key objectives:
-    1. **Generate Control Charts**: Track how solar panel efficiency changes over time using Statistical Process Control (SPC) methods.
-    2. **Identify Common Failure Modes**: Categorize and visualize the most frequent causes of solar panel failure.
-    3. **Analyze Lifespan Distributions**: Create and fit lifespan distribution charts (CDF, PDF, and Survival Probability) to assess panel survivability.
-    4. **Perform Cost Analysis**: Compare the cumulative costs of panel replacement versus repair to inform long-term maintenance strategy.
-    5. **Integrate All Outputs**: Compile all visualizations and analytical outputs into a final PDF report for NYSERDA stakeholders.
+1. **Generate Control Charts**: Track how solar panel efficiency changes over time using Statistical Process Control (SPC) methods.
+2. **Identify Common Failure Modes**: Categorize and visualize the most frequent causes of solar panel failure.
+3. **Analyze Lifespan Distributions**: Create and fit lifespan distribution charts (CDF, PDF, and Survival Probability) to assess panel survivability.
+4. **Perform Cost Analysis**: Compare the cumulative costs of panel replacement versus repair to inform long-term maintenance strategy.
+5. **Integrate All Outputs**: Compile all visualizations and analytical outputs into a final PDF report for NYSERDA stakeholders.
 
 ## Intended Users
 - **NYSERDA staff members**: seeking insights into solar farm performance and lifespan prediction.
