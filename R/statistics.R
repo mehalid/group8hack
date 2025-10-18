@@ -1,3 +1,11 @@
+#' @name statistics
+#' @title statistics 
+#' @description A function that takes in data and creates a reliability analysis
+#' @author group8
+#' @params csv_path, install_col, failure_col, horizons
+#' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
+#' @export
+
 # statistics.R
 #install.packages(c("readr", "hms"), dependencies = TRUE)
 
