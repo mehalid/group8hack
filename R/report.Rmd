@@ -1,0 +1,60 @@
+---
+title: "Solar Panel Reliability Report"
+output: html_document
+params:
+  stats: NULL
+  bar_plot: NULL
+  var_plot: NULL
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(ggplot2)
+library(ggpubr)
+library(dplyr)
+```
+
+```{r summary_narrative, echo=FALSE}
+library(gridExtra)
+
+# Build summary table as a grob
+tbl_plot <- build_summary_table_plot(params$stats) # returns ggtexttable (a grob)
+
+# Prepare narrative as plain text grob
+mttf_years <- params$stats$mttf_days / 365
+lambda_yr  <- params$stats$failure_rate_per_year
+n_total    <- if (!is.null(params$stats$n_total))  params$stats$n_total  else NA_integer_
+n_failed   <- if (!is.null(params$stats$n_failed)) params$stats$n_failed else NA_integer_
+surv10 <- 100 * exp(-lambda_yr * 10)
+surv25 <- 100 * exp(-lambda_yr * 25)
+
+narrative_text <- paste0(
+  "We modeled reliability with an exponential lifetime.\n",
+  "Estimated MTTF ≈ ", sprintf("%.1f", mttf_years), " years (λ ≈ ",
+  sprintf("%.4f", lambda_yr), " per year).\n",
+  "With ", n_total, " panels and ", n_failed, " observed failures, expected \n",
+  "survival is ~",
+  sprintf("%.1f", surv10), "% at 10 years and ~", sprintf("%.1f", surv25),
+  "% at 25 years. Use this to align warranty and maintenance plans."
+)
+
+# Convert narrative to a text grob
+narrative_grob <- grid::textGrob(narrative_text, x = 0, hjust = 0, gp = grid::gpar(fontsize = 11))
+
+# Arrange table and narrative side by side
+gridExtra::grid.arrange(tbl_plot, narrative_grob, ncol = 2, widths = c(1, 1.2))
+```
+
+```{r life_plots, echo=FALSE}
+life_plots <- build_life_plots(params$stats)
+ggpubr::ggarrange(life_plots$pdf, life_plots$cdf, life_plots$surv, ncol = 3)
+```
+
+```{r other_plots, echo=FALSE}
+# SPC Plot
+print(params$var_plot)
+
+# Failure Mode Bar Graph
+print(params$bar_plot)
+```
+
