@@ -31,3 +31,6 @@ The project focuses on the following key objectives:
 ## Intended Users
 - **NYSERDA staff members**: seeking insights into solar farm performance and lifespan prediction.
 - **Consulting analyst teams**: responsible for developing and maintaining the quality control and reporting framework.
+
+## Code Walkthrough
+The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a tutorial that reproduces the analysis and generates the final report.
