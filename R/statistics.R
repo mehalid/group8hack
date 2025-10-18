@@ -81,40 +81,40 @@ panel_stats <- function(csv_path,
 }
 
 # ---- Optional quick plot of exponential survival curve S(t) ----
-plot_exponential_survival <- function(stats, max_days = 3650) {
-  t <- seq(0, max_days, by = 30)
-  df <- data.frame(time_days = t, survival = stats$survival_fn(t))
-  ggplot(df, aes(time_days, survival)) +
-    geom_line(size = 1) +
-    labs(title = "Exponential Survival Curve (S(t) = e^{-λ t})",
-         subtitle = sprintf("λ = %.6f per day | MTTF = %.1f days",
-                            stats$failure_rate_per_day, stats$mttf_days),
-         x = "Time (days)", y = "Survival probability") +
-    theme_minimal(base_size = 12)
-}
+# plot_exponential_survival <- function(stats, max_days = 3650) {
+#   t <- seq(0, max_days, by = 30)
+#   df <- data.frame(time_days = t, survival = stats$survival_fn(t))
+#   ggplot(df, aes(time_days, survival)) +
+#     geom_line(size = 1) +
+#     labs(title = "Exponential Survival Curve (S(t) = e^{-λ t})",
+#          subtitle = sprintf("λ = %.6f per day | MTTF = %.1f days",
+#                             stats$failure_rate_per_day, stats$mttf_days),
+#          x = "Time (days)", y = "Survival probability") +
+#     theme_minimal(base_size = 12)
+# }
 
 
 
-stats <- panel_stats("panel_life_NY001.csv",
-                     install_col = "install_date",
-                     failure_col = "failure_date",
-                     horizons = c(365, 730, 1825))  # 1, 2, and 5 years
+# stats <- panel_stats("panel_life_NY001.csv",
+#                      install_col = "install_date",
+#                      failure_col = "failure_date",
+#                      horizons = c(365, 730, 1825))  # 1, 2, and 5 years
 
 
-lambda <- stats$failure_rate_per_year  
-mttf   <- stats$mttf_days/365  #per year
-
-
-t_max <- qexp(0.90, rate = lambda)                # ~90th percentile lifetime
-curve_df <- tibble::tibble(
-  t_years = seq(0, t_max, length.out = 100)
-) %>%
-  mutate(
-    pdf  = dexp(t_years, rate = lambda),            # f(t)
-    cdf  = pexp(t_years, rate = lambda),            # F(t)
-    surv = exp(-lambda * t_years),                  # S(t)
-    haz  = lambda                                  # h(t) (constant for exponential)
-  )
+# lambda <- stats$failure_rate_per_year  
+# mttf   <- stats$mttf_days/365  #per year
+# 
+# 
+# t_max <- qexp(0.90, rate = lambda)                # ~90th percentile lifetime
+# curve_df <- tibble::tibble(
+#   t_years = seq(0, t_max, length.out = 100)
+# ) %>%
+#   mutate(
+#     pdf  = dexp(t_years, rate = lambda),            # f(t)
+#     cdf  = pexp(t_years, rate = lambda),            # F(t)
+#     surv = exp(-lambda * t_years),                  # S(t)
+#     haz  = lambda                                  # h(t) (constant for exponential)
+#   )
 
 # # --- plots (all purely theoretical) ---
 # p_pdf <- ggplot(curve_df, aes(t_years, pdf)) +

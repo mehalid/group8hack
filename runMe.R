@@ -54,13 +54,21 @@ source("R/Bargraph.R")
 bar = Bargraph(farm_bad)
 
 source("R/statistics.R")
+stats <- panel_stats("panel_life_NY001.csv",
+                     install_col = "install_date",
+                     failure_col = "failure_date",
+                     horizons = c(365, 730, 1825))  # 1, 2, and 5 years
+
 
 source("R/pdf_function.R")
-
-
-write_single_page_report(stats, var$plot, bar,
-                         out_pdf = "SolarPanel_ReliabilityReport.pdf",
-                         warranty_years = 25)
+source("R/generate_report.R")
+generate_solar_report(stats, bar$plot, var$plot)
+# source("R/pdf_function.R")
+# 
+# 
+# write_single_page_report(stats, var$plot, bar,
+#                          out_pdf = "SolarPanel_ReliabilityReport.pdf",
+#                          warranty_years = 25)
 
 
 

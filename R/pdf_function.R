@@ -7,15 +7,15 @@ build_life_plots <- function(stats, warranty_years = 25) {
   mttf_years <- stats$mttf_days / 365
   lambda_yr  <- stats$failure_rate_per_year
   
-  t_max <- qexp(0.90, rate = lambda)                # ~90th percentile lifetime
+  t_max <- qexp(0.90, rate = lambda_yr)                # ~90th percentile lifetime
   curve_df <- tibble::tibble(
     t_years = seq(0, t_max, length.out = 100)
   ) %>%
     mutate(
-      pdf  = dexp(t_years, rate = lambda),            # f(t)
-      cdf  = pexp(t_years, rate = lambda),            # F(t)
-      surv = exp(-lambda * t_years),                  # S(t)
-      haz  = lambda                                  # h(t) (constant for exponential)
+      pdf  = dexp(t_years, rate = lambda_yr),            # f(t)
+      cdf  = pexp(t_years, rate = lambda_yr),            # F(t)
+      surv = exp(-lambda_yr * t_years),                  # S(t)
+      haz  = lambda_yr                                  # h(t) (constant for exponential)
     )
   
   # --- plots (all purely theoretical) ---
