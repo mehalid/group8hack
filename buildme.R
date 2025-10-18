@@ -6,23 +6,24 @@
 setwd("/cloud/project")
 
 # Unload your package and uninstall it first.
-unloadNamespace("teamATE_solarPanel_tool"); remove.packages("teamATE_solarPanel_tool")
+unloadNamespace("Group8hack"); remove.packages("Group8hack")
 
 # Auto-document your package, turning roxygen comments into manuals in the `/man` folder
 devtools::document(".")
 # Load your package temporarily!
 devtools::load_all(".")
 
+
 # Test out our functions
-teamATE_solarPanel_tool::plus_one(x = 1) #CHANGE THIS--------
+# Group8hack::DataDistrubition(x = c(1,5,7,12)) #CHANGE THIS--------
 
 # When finished, remember to unload the package
-unloadNamespace("teamATE_solarPanel_tool")
+unloadNamespace("Group8hack")
 
 # Then, when ready, document, unload, build, and install the package!
 # For speedy build, use binary = FALSE and vignettes = FALSE
 devtools::document("."); # document the package
-unloadNamespace("teamATE_solarPanel_tool"); # unload the package
+unloadNamespace("Group8hack"); # unload the package
 
 # Build the package
 devtools::build(pkg = ".", path = getwd(), binary = FALSE, vignettes = FALSE)
@@ -35,15 +36,15 @@ rstudioapi::restartSession()
 # such as 
 # install.packages("nameofyourpackagefile.tar.gz", type = "source")
 # or in our case:
-install.packages("demotool_1.0.tar.gz", type = "source") #CHANGE THIS--------
+install.packages("Group8hack_1.0.tar.gz", type = "source") #CHANGE THIS--------
 
 
 # Load your package!
-library("teamATE_solarPanel_tool")
+library("Group8hack")
 
 
 # When finished, remember to unload the package
-unloadNamespace("teamATE_solarPanel_tool"); remove.packages("teamATE_solarPanel_tool")
+unloadNamespace("Group8hack"); remove.packages("Group8hack")
 
 # Always a good idea to clear your environment and cache
 rm(list = ls()); gc()
