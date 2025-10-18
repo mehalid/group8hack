@@ -1,4 +1,11 @@
+#' @name cost_function
+#' @title cost_function
+#' @description Function to calculate the total cost, including failure cost and maintenance cost
+#' @author group8
+#' @params data, issue_costs, issue_col = "failure_type", id_col = "panel_id", install_col =   #"install_date", routine_cost_per_visit = 800,  schedule_years = 1, as_of = Sys.Date(), strict = #TRUE
 
+#' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
+#' @export
 library(dplyr)
 library(lubridate)
 
