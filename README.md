@@ -20,26 +20,26 @@ This project builds a **quality control and reliability assessment framework for
 ## 🎯 Scope  
 As consulting analysts for the **New York State Energy Research & Development Authority (NYSERDA)**, our goal is to design and demonstrate a **data-driven quality control system** that can:
 
-- 📊 Monitor the performance and degradation of solar panels over time  
-- ⚙️ Identify common sources of failure  
-- ⏳ Estimate remaining useful life of panels  
-- 💸 Support cost-based decision-making between repair and replacement  
+-  Monitor the performance and degradation of solar panels over time  
+-  Identify common sources of failure  
+-  Estimate remaining useful life of panels  
+-  Support cost-based decision-making between repair and replacement  
 
 ---
 
 ## 🧩 Core Objectives  
 
-1. 🧮 **Generate Control Charts:** Track solar panel efficiency over time using Statistical Process Control (SPC).  
-2. 🔍 **Identify Failure Modes:** Categorize and visualize the most common causes of panel failure.  
-3. 📈 **Analyze Lifespan Distributions:** Fit and visualize lifespan data (CDF, PDF, and Survival Probability).  
-4. 💰 **Perform Cost Analysis:** Compare cumulative repair vs. replacement costs to guide decisions.  
-5. 🧾 **Integrate All Outputs:** Compile visualizations and analytics into a final report for NYSERDA stakeholders.  
+1.  **Generate Control Charts:** Track solar panel efficiency over time using Statistical Process Control (SPC).  
+2.  **Identify Failure Modes:** Categorize and visualize the most common causes of panel failure.  
+3.  **Analyze Lifespan Distributions:** Fit and visualize lifespan data (CDF, PDF, and Survival Probability).  
+4.  **Perform Cost Analysis:** Compare cumulative repair vs. replacement costs to guide decisions.  
+5.  **Integrate All Outputs:** Compile visualizations and analytics into a final report for NYSERDA stakeholders.  
 
 ---
 
 ## 👥 Intended Users  
-- 🧠 **NYSERDA staff:** Seeking data-driven insights into solar panel performance and longevity.  
-- 🧑‍💻 **Consulting analysts:** Maintaining or expanding the quality control and reporting framework.  
+-  **NYSERDA staff:** Seeking data-driven insights into solar panel performance and longevity.  
+-  **Consulting analysts:** Maintaining or expanding the quality control and reporting framework.  
 
 ---
 
