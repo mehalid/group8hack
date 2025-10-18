@@ -47,4 +47,4 @@ Bargraph <- function(input) {
   return(gbar)
 }
 
-Bargraph(farm_bad)
+bar_plot = Bargraph(farm_bad)

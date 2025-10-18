@@ -1,5 +1,7 @@
 # statistics.R
 # Minimal reliability stats for solar panels using ONLY these libs:
+#install.packages(c("readr", "hms"), dependencies = TRUE)
+
 library(dplyr)   # data wrangling
 library(readr)   # read_csv
 library(ggplot2) # optional quick plot

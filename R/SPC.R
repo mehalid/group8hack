@@ -64,6 +64,7 @@ StatisticalProcessTest <- function (input1, input2, input3) {
       type = c("xbbar",  "upper", "lower", "upper1", "lower1", "upper2", "lower2"),
       name = c("mean", "+3 s", "-3 s", "+2 s", "-2 s", "+1 s", "-1 s"),
       value = c(mean(xbar), unique(upper), unique(lower), unique(upper1), unique(lower1), unique(upper2), unique(lower2)),
+      value = round(value,2),
       text = paste(name, value, sep = " = "))
   
   g1 = stat_s %>%
