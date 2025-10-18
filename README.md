@@ -74,61 +74,61 @@ The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a
 
 ---
 
-## 📦 Codebook  
+## 📕 Codebook  
 
 
 ---
 
-## 📦 Function Descriptions  
+## 🥽 Function Descriptions  
 
 [`make_datasheet.R`](./R/make_datasheet.R):
-#' @name make_datasheet
-#' @title make_datasheet
-#' @description Two functions that creates panel life information and telemetry for one farm 
-#' @author group8
-#' @params farm_id, mean_life, sd_life, fail_type_probs, maint_delay_mean, farm_df, farm_id, # deg_rate, irr_factor_range, noise_range
+Name make_datasheet
+Title make_datasheet
+Description Two functions that creates panel life information and telemetry for one farm 
+Author group8
+Params farm_id, mean_life, sd_life, fail_type_probs, maint_delay_mean, farm_df, farm_id, # deg_rate, irr_factor_range, noise_range
 
 [`SPC.R`](./R/SPC.R): 
-#' @name StatisticalProcessTest 
-#' @title SPC
-#' @description Function to create a control chart of average efficiency 
-#' @author group8
-#' @params input1 = actual power, input 2 = expected power, input3 = timestep.
+Name StatisticalProcessTest 
+Title SPC
+Description Function to create a control chart of average efficiency 
+Author group8
+Params input1 = actual power, input 2 = expected power, input3 = timestep.
 
 [`Bargraph.R`](./R/Bargraph.R):
-#' @name Bargraph
-#' @title Bargraph
-#' @description Generate a bar graph of the different failure types
-#' @author Group 8
-#' @params input (numeric) vector of 1 or more numeric values.
+Name Bargraph
+Title Bargraph
+Description Generate a bar graph of the different failure types
+Author Group 8
+Params input (numeric) vector of 1 or more numeric values.
 
 [`statistics.R`](./R/statistics.R):
-#' @name statistics
-#' @title statistics 
-#' @description A function that takes in data and creates a reliability analysis
-#' @author group8
-#' @params csv_path, install_col, failure_col, horizons
+Name statistics
+Title statistics 
+Description A function that takes in data and creates a reliability analysis
+Author group8
+Params csv_path, install_col, failure_col, horizons
 
 [`cost_function2.R`](./R/cost_function2.R):
-#' @name cost_function2
-#' @title cost_function2
-#' @description Function to plot the amount of maintenance and total cost per panel
-#' @author group8
-#' @params data, issue_costs, issue_col, id_col, install_col, routine_cost_per_visit,  #schedule_years, as_of 
+Name cost_function2
+Title cost_function2
+Description Function to plot the amount of maintenance and total cost per panel
+Author group8
+Params data, issue_costs, issue_col, id_col, install_col, routine_cost_per_visit,  #schedule_years, as_of 
 
 [`pdf_function.R`](./R/pdf_function.R):
-#' @name pdf_function
-#' @title pdf_function
-#' @description Gathers all the graph and data we generated
-#' @author Group 8, PhD
-#' @params vector or graphs variables from previously used functions
+Name pdf_function
+Title pdf_function
+Description Gathers all the graph and data we generated
+Author Group 8, PhD
+Params vector or graphs variables from previously used functions
 
 [`generate_report.R`](./R/generate_report.R)
-#' @name generate_solar_report
-#' @title generate_solar_report
-#' @description Function to generate a website with our graphs and data analysis
-#' @author group8
-#' @params stats, bar_plot, var_plot, output_file
+Tame generate_solar_report
+Title generate_solar_report
+Description Function to generate a website with our graphs and data analysis
+Author group8
+Params stats, bar_plot, var_plot, output_file
 
 ---
 
