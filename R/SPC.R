@@ -1,3 +1,6 @@
+#Control Plot functions
+#Outputs: the control plot and the slope of the plot
+
 StatisticalProcessTest <- function (input1, input2, input3) {
   #Load Packages
   library(tidyverse)

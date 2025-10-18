@@ -2,11 +2,6 @@ library(dplyr)
 library(ggplot2)
 library(ggpubr)
 
-stats <- panel_stats("panel_life_NY001.csv",
-                     install_col = "install_date",
-                     failure_col = "failure_date",
-                     horizons = c(365, 730, 1825))  # 1, 2, and 5 years
-
 # --- life plots from your stats (YEARS) ---
 build_life_plots <- function(stats, warranty_years = 25) {
   mttf_years <- stats$mttf_days / 365
@@ -115,15 +110,13 @@ build_narrative_plot <- function(stats, var, bar) {
     }
   }
   
-
-  
   
   text <- paste0(
-    "\n\n We modeled reliability with an exponential lifetime.\n",
-    "Estimated MTTF =", sprintf("%.1f", mttf_years), ".",
-    "With ", n_total, " panels and ", n_failed, " observed failures, expected survival is ",
-    sprintf("%.1f", surv10), "% at 10 years and ", sprintf("%.1f", surv25),
-    "% at 25 years.",
+    "\n\n Reliability was modeled using an exponential lifetime distribution.\n",
+    "Estimated MTTF =", sprintf("%.1f", mttf_years), " years.",
+    "Based on ", n_total, " panels and ", n_failed, " observed failures, the expected survival rate is ",
+    sprintf("%.1f", surv10), "% after 10 years and ", sprintf("%.1f", surv25),
+    "% after 25 years.",
     slope_msg,
     bar_msg
   )

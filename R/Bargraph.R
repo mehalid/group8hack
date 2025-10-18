@@ -1,3 +1,6 @@
+#Functions that outputs a bar plot showing the tendencies of each failure type
+#Outputs: the plot and the top failure type (string)
+
 Bargraph <- function(input) { 
   # Load required packages
   library(dplyr)
