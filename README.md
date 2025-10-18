@@ -75,6 +75,10 @@ The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a
 ---
 
 ## 📕 Codebook  
+<div style="text-align: center;">
+  <img src="pics/codebook1.png" width="100%"/>  
+  <img src="pics/codebook2.png" width="75%"/>  
+</div>
 
 
 ---
