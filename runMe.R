@@ -1,3 +1,8 @@
+# Step 0:
+# Run codebook creation function to view codebook for subsequency data creation
+source("R/create_codebook.R")
+codebook_list = create_codebook()
+
 #Step 1: Load Datasheet - for our case we run a function to create the dataset
 #Run make_datsheet.R to load the dataset
 
