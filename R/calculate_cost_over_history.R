@@ -4,7 +4,7 @@ source("R/cost_function2.R")
 
 #USER INPUTS
 #Data
-data_set="panel_life_NY002.csv"
+data_set="panel_life_NY001.csv"
 
 #Cost to fix a wiring issue
 wiring_cost=180+600
