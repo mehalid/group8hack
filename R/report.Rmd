@@ -5,6 +5,7 @@ params:
   stats: NULL
   bar_plot: NULL
   var_plot: NULL
+  stat_s: NULL
 ---
 
 ```{r setup, include=FALSE}
@@ -52,6 +53,12 @@ if (!is.null(bar) && "top_failure_type" %in% names(bar)) {
   }
 }
 
+cc_msg <- ""
+if (!is.null(var) && "xbar" %in% names(var)) {
+  if (xbar > upper || xbar < lower) {
+    cc_msg <- " According to the control chart, there are panels operating outside of maximum control limits of the average efficiency. \n Please check on the panels."
+}
+
 narrative_text <- paste0(
       "• The farm’s reliability was modeled using an exponential\n",
   " lifetime distribution.\n",
@@ -61,10 +68,10 @@ narrative_text <- paste0(
   "• The model predicts\n",
   "      • ", sprintf("%.1f", surv10), "% after 10 years \n",
   "      • ", sprintf("%.1f", surv25), "% after 25 years \n",
-  # 👇 add newline + bullet for each optional message
+  # add newline + bullet for each optional message
   if (nzchar(slope_msg)) paste0("• ", slope_msg, "\n") else "",
-  if (nzchar(bar_msg))   paste0("• ", bar_msg,   "\n") else ""
-
+  if (nzchar(bar_msg))   paste0("• ", bar_msg,   "\n") else "",
+  if (nzchar(cc_msg)) paste0("• ", cc_msg, "\n") else "",
   )
 
 # Convert narrative to a text grob
