@@ -2,7 +2,7 @@
 
 # ☀️ Team Ate — Six Sigma Hackathon  
 
-👥 **Group Members:** Mehali Desai · Andrew Lin · Adhyan Prasad · Jennie Redrovan · **Aleira Sanchez**
+👥 **Group Members:** Mehali Desai · Andrew Lin · Adhyan Prasad · Jennie Redrovan · Aleira Sanchez
 
 ---
 
