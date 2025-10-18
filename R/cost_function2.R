@@ -1,3 +1,13 @@
+#' @name cost_function2
+#' @title cost_function2
+#' @description Function to plot the amount of maintenance and total cost per panel
+#' @author group8
+#' @params data, issue_costs, issue_col, id_col, install_col, routine_cost_per_visit,  #schedule_years, as_of 
+
+#' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
+#' @export
+
+
 library(dplyr)
 library(lubridate)
 library(ggplot2)
