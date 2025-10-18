@@ -2,7 +2,7 @@
 
 # 🎱 Team Ate - Six Sigma Hackathon
 - 👥 **Group members:** Mehali Desai, Andrew Lin, Adhyan Prasad, Jennie Redrovan and Aleira Sanchez
-- 
+
 # Our Tool 💡🔋
 ## Introduction
 This repository provides a data analysis and visualization tool designed to address the following prompt:
