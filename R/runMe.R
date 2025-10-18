@@ -1,17 +1,13 @@
-# Step 0: 
+# Optional Step 0: 
 # Run codebook creation function to view codebook for subsequency data creation
 source("R/create_codebook.R")
 codebook_list = create_codebook()
 
 
 #Step 1: Load or simulate datasheet and provide numbers for maintanance costs
-# If simulating, run make_datasheet.R to create the dataset and change the value
-# of the commented field below
-# If loading own dataset, edit the line below
-data_set="panel_life_NY002.csv"
 
 # Adjust the following to accurately reflect your cost per panel for routine
-# maintanance as well as failure modes/cost per failure mode
+# maintenance as well as failure modes/cost per failure mode
 #Cost to fix a wiring issue
 wiring_cost=180+600
 #Cost to fix a crack issue
@@ -28,8 +24,10 @@ issue_costs <- tibble::tibble(
   unit_cost = c(wiring_cost, crack_cost, wear_cost, Delamination_cost)
 )
 
-
-#Step 2: Upload functions: SPC.R, Bargraph.R, pdf_function.R
+# If simulating, run the following included functions to create the dataset and change the value
+# of the farm_data_set field commented field below
+# If loading own dataset, edit the farm_data_set field below the simulation and uncomment 
+# the write to csv lines that follow 
 
 source("R/make_datasheet.R")
 
@@ -73,66 +71,54 @@ write.csv(telemetry_bad, "panel_telemetry_NY002.csv", row.names = FALSE)
 
 cat("Saved panel_life_NY001.csv, panel_life_NY002.csv, panel_telemetry_NY001.csv, and panel_telemetry_NY002.csv\n")
 
+# IMPORTANT: Update farm_data_set with the farm level data set you would like to use
+# For all of the following steps besides the cost function, please input the variable 
+# name instead of the file name as you have saved above. Sample inputs are provided in each
+# of the function calls (using the "normal" datasets)
+
+#write.csv(farm_user, "ENTER_YOUR_NAME.csv", row.names = FALSE)
+#write.csv(telemetry_user, "ENTER_YOUR_NAME.csv", row.names = FALSE)
+farm_data_set="panel_life_NY001.csv"
+
+#Step 3: Control Plot Function: Call StatisticalProcessTest Function w/ efficiency values from dataset-----
+#Open SPC.R for more info
 source("R/SPC.R")
-var = StatisticalProcessTest(telemetry_bad$actual_output_kW[1:1000],telemetry_bad$expected_output_kW[1:1000],telemetry_bad$timestep[1:1000])
-var$plot
-#var$slope
+SPC = StatisticalProcessTest(telemetry_normal$actual_output_kW[1:1000],
+                             telemetry_normal$expected_output_kW[1:1000],
+                             telemetry_normal$timestep[1:1000])
 
+#Step 4: Bar Graph: will give you a bar plot with the occurrences of each failure mode----
+#Open Bargraph.R for more info
 source("R/Bargraph.R")
-bar = Bargraph(farm_bad)
+bar = Bargraph(farm_normal)
 
+#Step 5: Run the following function to see generate relevant failure and survival 
+#statistics for your inputted data. These will be tabulated in the final report
+#Open statistics.R for more info
 source("R/statistics.R")
-stats <- panel_stats("panel_life_NY001.csv",
+stats <- panel_stats("panel_life_NY002.csv",
                      install_col = "install_date",
                      failure_col = "failure_date",
                      horizons = c(365, 730, 1825))  # 1, 2, and 5 years
 
-# Step ___: Maintenance efforts v.s. total cost per panel
+# Step 6: Maintenance efforts v.s. total cost per panel
+# Run the following code to compute the total cost accumulated through farm operation
 source("R/cost_function2.R")
 # Compute costs
 cost_output <- compute_panel_costs2(
-  data = data_set,
+  data = farm_data_set,
   issue_costs = issue_costs,
   issue_col = "failure_type",
   id_col = "panel_id",
   install_col = "install_date",
-  visits_col = "n_maintenances",        # or "num_of_visits" depending on dataset
-  # routine_cost_per_visit = routine_maintenance_cost,
-  routine_cost_per_visit = 300,
+  visits_col = "n_maintenances",
+  routine_cost_per_visit = 300, #NOTE: PLEASE MANUALLY INPUT YOUR VALUE HERE
   as_of = Sys.Date()
 )
 
-
+# Step 7: Finally, run the following code to generate an HTML report which will
+# be saved as Solar_Report.html. Clicking on that file in the explorer and 
+# selecting "view in web browswer" will allow you to view the file
 source("R/pdf_function.R")
 source("R/generate_report.R")
-generate_solar_report(stats, bar$plot, var$plot)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Step 3: Control Plot Function: Call StatisticalProcessTest Function w/ efficiency values from dataset-----
-#Open SPC.R for more info
-
-#Step 4: Bar Graph: will give you a bar plot with the occurrences of each failure mode----
-#Open Bargraph.R for more info
-
-#Step 5: Open and Run statistics.R
-
-#Step 6: Pdf function:-------
-#  stats: list outputted from statistics.R
-# var$plot: the control plot outputted from SPC.R
-# bar$plot: the bar plot outputted from Bargraph.R
-# out_pdf: is the name of the pdf you want to save
-
+generate_solar_report(stats, bar$plot, SPC$plot)
