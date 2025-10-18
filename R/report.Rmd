@@ -27,16 +27,45 @@ n_total    <- if (!is.null(params$stats$n_total))  params$stats$n_total  else NA
 n_failed   <- if (!is.null(params$stats$n_failed)) params$stats$n_failed else NA_integer_
 surv10 <- 100 * exp(-lambda_yr * 10)
 surv25 <- 100 * exp(-lambda_yr * 25)
+# --- Add slope message if slope data provided ---
+slope_msg <- ""
+if (!is.null(var) && "slope" %in% names(var)) {
+  if (sign(var$slope) == -1) {
+    slope_msg <- "The control chart has a gradual decline or negative \n slope, suggesting decreasing average efficiency \n amongst the solar panels over time."
+  } else if (sign(var$slope) == 1) {
+    slope_msg <- "The control chart has a gradual incline or positive \n slope, suggesting increasing average efficiency \n amongst the solar panels over time."
+  } else {
+    slope_msg <- "The control chart has a neutral trend, suggesting no \n significant change in efficiency."
+  }
+}
+  
+bar_msg <- ""
+if (!is.null(bar) && "top_failure_type" %in% names(bar)) {
+  if (bar$top_failure_type == "Wiring") {
+    bar_msg <- " Most of your failures are due to wiring issues. \n We recommend prioritizing electrical inspections \n and maintenance to prevent these failures."
+  } else if (bar$top_failure_type== "Crack") {
+    bar_msg <- " Most of your failures are due to cracking issues. \n We recommend replacing the part and contacting \n the panel supplier."
+  } else if (bar$top_failure_type == "Wear") {
+    bar_msg <- " Most of your failures are due to wear issues. \n We recommend contacting a maintenance crew."
+  } else if (bar$top_failure_type == "Delamination") {
+    bar_msg <- " Most of your failures are due to Delamination issues. \n We recommend replacing the part and consulting with the panel supplier."
+  }
+}
 
 narrative_text <- paste0(
-  "We modeled reliability with an exponential lifetime.\n",
-  "Estimated MTTF ≈ ", sprintf("%.1f", mttf_years), " years (λ ≈ ",
+      "• The farm’s reliability was modeled using an exponential\n",
+  " lifetime distribution.\n",
+  "• The mean time to failure (MTTF) was estimated at ", sprintf("%.1f", mttf_years), " years (λ ≈ ",
   sprintf("%.4f", lambda_yr), " per year).\n",
-  "With ", n_total, " panels and ", n_failed, " observed failures, expected \n",
-  "survival is ~",
-  sprintf("%.1f", surv10), "% at 10 years and ~", sprintf("%.1f", surv25),
-  "% at 25 years. Use this to align warranty and maintenance plans."
-)
+  "With ", n_total, " panels and ", n_failed, " observed failures. \n",
+  "• The model predicts\n",
+  "      • ", sprintf("%.1f", surv10), "% after 10 years \n",
+  "      • ", sprintf("%.1f", surv25), "% after 25 years \n",
+  # 👇 add newline + bullet for each optional message
+  if (nzchar(slope_msg)) paste0("• ", slope_msg, "\n") else "",
+  if (nzchar(bar_msg))   paste0("• ", bar_msg,   "\n") else ""
+
+  )
 
 # Convert narrative to a text grob
 narrative_grob <- grid::textGrob(narrative_text, x = 0, hjust = 0, gp = grid::gpar(fontsize = 11))
