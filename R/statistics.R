@@ -93,13 +93,3 @@ plot_exponential_survival <- function(stats, max_days = 3650) {
          x = "Time (days)", y = "Survival probability") +
     theme_minimal(base_size = 12)
 }
-
-# ---------------------- Example usage ----------------------
-# stats <- panel_stats("your_panels.csv",
-#                      install_col = "install_date",
-#                      failure_col = "failure_date",
-#                      horizons = c(365, 730, 1825))
-# print(stats$mttf_days)
-# print(stats$failure_rate_per_day)
-# print(stats$survival_at)
-# plot_exponential_survival(stats, max_days = 3650)

@@ -21,6 +21,8 @@ Bargraph <- function(input) {
   
   print(failure_summary)  # optional view
   
+  top_failure_type <- failure_summary$failure_type[1]
+  
   # --- Create bar chart ---
   gbar <- ggplot(failure_summary,
                  aes(x = reorder(failure_type, -Number_of_Failures),
@@ -44,7 +46,9 @@ Bargraph <- function(input) {
       panel.grid.minor.y = element_blank()
     )
   
-  return(gbar)
+  return(list(plot = gbar, top_failure_type = top_failure_type))
 }
 
-bar_plot = Bargraph(farm_bad)
+bar = Bargraph(farm_bad)
+bar$plot
+bar$top_failure_type
