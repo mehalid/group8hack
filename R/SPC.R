@@ -77,9 +77,10 @@ StatisticalProcessTest <- function (input1, input2, input3) {
     geom_hline(aes(yintercept = upper1), color = "burlywood", size = 3) +
     geom_hline(aes(yintercept = upper2), color = "brown", size = 3) +
     geom_hline(aes(yintercept = lower2), color = "brown", size = 3) +
-    geom_hline(aes(yintercept = lower), color = "green", size = 3) +
-    geom_hline(aes(yintercept = upper), color = "green", size = 3) +
+    geom_hline(aes(yintercept = lower), color = "pink", size = 3) +
+    geom_hline(aes(yintercept = upper), color = "pink", size = 3) +
     geom_ribbon(aes(ymin = lower, ymax = upper), fill = "steelblue", alpha = 0.2) +
+    scale_x_continuous(expand=expansion(c(0,0)))+ 
     geom_line(size = 1) +
     geom_point(size = 2) +
     # Plot labels
@@ -93,6 +94,4 @@ StatisticalProcessTest <- function (input1, input2, input3) {
   return(list(plot = g1, slope = slope))
 }
 
-var = StatisticalProcessTest(telemetry_normal$actual_output_kW[1:1000],telemetry_normal$expected_output_kW[1:1000],telemetry_normal$timestep[1:1000])
-var$plot
-var$slope
+

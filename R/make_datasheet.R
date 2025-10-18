@@ -39,11 +39,11 @@ generate_farm_data <- function(farm_id, mean_life, sd_life, fail_type_probs, mai
 # ---- Function to generate telemetry for one farm ----
 generate_farm_telemetry <- function(farm_df, farm_id, deg_rate, irr_factor_range, noise_range) {
   # select a subset of panels
-  sample_panels <- sample(farm_df$panel_id, n_telemetry_panels)
+  sample_panels <- sample(farm_df$panel_id, 10)
   
   # select ~1000 dates evenly spaced from 2020–2025
   full_days <- seq(as.Date("2020-01-01"), as.Date("2025-01-01"), by = "day")
-  sample_days <- full_days[seq(1, length(full_days), length.out = n_telemetry_points)]
+  sample_days <- full_days[seq(1, length(full_days), length.out = 100)]
   
   telemetry <- expand.grid(
     panel_id = sample_panels,
