@@ -16,9 +16,9 @@ This project builds a **quality control and reliability assessment framework for
 ## Scope
 As consulting analysts for the **New York State Energy Research & Development Authority (NYSERDA)**, our goal is to design and demonstrate a **data-driven quality control system** that can:
 - Monitor the performance and degradation of solar panels over time.
-    - Identify common sources of failure.
-    - Estimate remaining useful life of panels.
-    - Support cost-based decision-making between repair and replacement.
+- Identify common sources of failure.
+- Estimate remaining useful life of panels.
+- Support cost-based decision-making between repair and replacement.
 
 ## Core Objectives
 The project focuses on the following key objectives:
