@@ -47,23 +47,23 @@ As consulting analysts for the **New York State Energy Research & Development Au
 
 The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a tutorial that reproduces the analysis and generates the final report.  
 
-1. 🧰 **Generate the Dataset**  
+1.  **Generate the Dataset**  
    Upload your datasheet (in the same format as the provided codebook).  
    - To generate sample data, run [`make_datasheet.R`](./R/make_datasheet.R).  
 
-2. 📊 **Generate Control Charts**  
+2.  **Generate Control Charts**  
    Run [`SPC.R`](./R/SPC.R) to create control charts showing panel efficiency trends.  
 
-3. 📦 **Visualize Failure Types**  
+3.  **Visualize Failure Types**  
    Run [`Bargraph.R`](./R/Bargraph.R) to generate a bar plot of failure frequencies and types.  
 
-4. 📈 **Run Core Statistics Function**  
+4.  **Run Core Statistics Function**  
    Execute [`statistics.R`](./R/statistics.R) to calculate summary statistics and plot lifespan distributions (CDF, PDF, survival).  
 
-5. 🧮 **Compile All Results**  
+5.  **Compile All Results**  
    Use [`pdf_function.R`](./R/pdf_function.R) to merge all outputs into an organized HTML report.  
 
-6. 🌐 **Export Final HTML Report**  
+6.  **Export Final HTML Report**  
    Return to [`runMe.R`](./R/runMe.R) and run the final code block to generate your comprehensive report.  
    The final HTML file will appear in your project folder.  
 
@@ -72,16 +72,16 @@ The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a
 ## 📦 Output  
 
 The final deliverable is a **comprehensive HTML report** that includes:  
-- 🧭 Control chart for efficiency monitoring  
-- 📉 Lifespan distribution and survival probability analysis  
-- 🧱 Failure frequency visualization  
-- 💵 Cost analysis insights  
-- 🧾 Key takeaways and recommendations for NYSERDA  
+-  Control chart for efficiency monitoring  
+-  Lifespan distribution and survival probability analysis  
+-  Failure frequency visualization  
+-  Cost analysis insights  
+-  Key takeaways and recommendations for NYSERDA  
 
 ---
 
 ## 📚 Sources  
 
 In developing this tool, we referenced:  
-- 💬 **ChatGPT** (for code and documentation refinement)  
-- 📘 **Tim Fraser’s Online Textbook** (for statistical foundations)  
+-  **ChatGPT** (for code and documentation refinement)  
+-  **Tim Fraser’s Online Textbook** (for statistical foundations)  
