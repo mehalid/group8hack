@@ -1,5 +1,6 @@
 library(dplyr)
 library(lubridate)
+library(ggplot2)
 
 compute_panel_costs2 <- function(data,
                                  issue_costs,
@@ -44,14 +45,16 @@ compute_panel_costs2 <- function(data,
   # ---- Calculate costs ----
   df <- df %>%
     mutate(
-      maintenance_cost = visits * routine_cost_per_visit,
+      # Replacement happens if there's an 'event' column and event == 1
       replacement_cost = ifelse("event" %in% names(.) & event == 1, unit_cost, 0),
-      total_cost = maintenance_cost + replacement_cost
+      maintenance_cost = visits * routine_cost_per_visit,
+      total_cost = maintenance_cost + replacement_cost,
+      failed = replacement_cost > 0   # ← NEW: derive failure flag directly
     )
   
   # ---- Output summaries ----
   per_panel <- df %>%
-    select(panel_id, failure_type, install_date, visits,
+    select(panel_id, failure_type, install_date, visits, failed,
            maintenance_cost, replacement_cost, total_cost)
   
   totals <- list(
@@ -60,5 +63,24 @@ compute_panel_costs2 <- function(data,
     total_cost = sum(per_panel$total_cost, na.rm = TRUE)
   )
   
-  list(per_panel = per_panel, totals = totals)
+  # ---- Plot: Maintenance count vs. Total cost ----
+  p <- ggplot(per_panel, aes(x = visits, y = total_cost, color = failed)) +
+    # geom_point(size = 3, alpha = 0.8) +
+    geom_jitter(width = 0.2, height = 50, size = 3, alpha = 0.7) +
+    scale_color_manual(
+      values = c("TRUE" = "red", "FALSE" = "green"),
+      labels = c("TRUE" = "Failed", "FALSE" = "Not Failed"),
+      name = "Panel Status"
+    ) +
+    labs(
+      title = "Maintenance vs. Total Cost per Panel",
+      x = "Number of Maintenance Visits",
+      y = "Total Cost ($)"
+    ) +
+    theme_minimal(base_size = 14)
+  
+  print(p)
+  
+  # ---- Return results ----
+  list(per_panel = per_panel, totals = totals, plot = p)
 }
