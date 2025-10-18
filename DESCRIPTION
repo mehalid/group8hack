@@ -1,0 +1,21 @@
+Package: Group8hack
+Version: 0.1.0
+Date: 2023-11-01
+Title: Demo package for Publicly Available R Package Tool
+Authors@R: c(
+  person("Andrew", "Lin", email = "al885@cornell.edu", role = c("aut", "cre")),
+  person("Mehali", "Desai", email = "mnd38@cornell.edu", role = "aut"),
+  person("Adi", "Prasad", email = "myemail2@cornell.edu", role = "ctb") )
+Author: Andrew Lin [aut, cre],
+  Mehali Desai [aut],
+  Adi Prasad [ctb]
+Maintainer: Andrew Lin <al885@cornell.edu>
+Description: One-line description for package goes here. Make sure this script ends with an extra blank line after `Imports:`
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Rxoygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+Depends: R (>= 3.5.0)
+Imports:
+  dplyr (>= 1.1.4)
