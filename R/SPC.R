@@ -77,9 +77,11 @@ StatisticalProcessTest <- function (input1, input2, input3) {
     geom_hline(aes(yintercept = upper1), color = "burlywood", size = 3) +
     geom_hline(aes(yintercept = upper2), color = "brown", size = 3) +
     geom_hline(aes(yintercept = lower2), color = "brown", size = 3) +
+    geom_hline(aes(yintercept = lower), color = "green", size = 3) +
+    geom_hline(aes(yintercept = upper), color = "green", size = 3) +
     geom_ribbon(aes(ymin = lower, ymax = upper), fill = "steelblue", alpha = 0.2) +
     geom_line(size = 1) +
-    geom_point(size = 5) +
+    geom_point(size = 2) +
     # Plot labels
     #geom_label(data = labels, mapping = aes(x = labels$time, y = value, label = text),  hjust = 1)  +
     geom_label(data = labels, aes(x = time, y = value, label = text), hjust = 1) +

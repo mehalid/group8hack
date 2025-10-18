@@ -1,14 +1,16 @@
-library(dplyr)
-
-set.seed(42)
-
-# ---- Basic parameters ----
-n_panels <- 100
-n_telemetry_panels <- 10
-n_telemetry_points <- 100
 
 # ---- Helper function to generate panel life info ----
 generate_farm_data <- function(farm_id, mean_life, sd_life, fail_type_probs, maint_delay_mean) {
+  library(dplyr)
+  
+  set.seed(42)
+  
+  
+  # ---- Basic parameters ----
+  n_panels <- 100
+  n_telemetry_panels <- 10
+  n_telemetry_points <- 100
+  
   df <- data.frame(
     panel_id = paste0(farm_id, "_P", sprintf("%03d", 1:n_panels)),
     system_id = farm_id,
@@ -60,42 +62,42 @@ generate_farm_telemetry <- function(farm_df, farm_id, deg_rate, irr_factor_range
   return(telemetry)
 }
 
-# ---- Generate the two farms ----
-farm_normal <- generate_farm_data(
-  farm_id = "NY001",
-  mean_life = 28, sd_life = 3,
-  fail_type_probs = c(0.3, 0.2, 0.3, 0.2),  # balanced causes
-  maint_delay_mean = 365                     # ~1 year maintenance
-)
-
-farm_bad <- generate_farm_data(
-  farm_id = "NY002",
-  mean_life = 20, sd_life = 4,
-  fail_type_probs = c(0.1, 0.7, 0.1, 0.1),  # mostly Wiring
-  maint_delay_mean = 800                     # infrequent maintenance
-)
-
-# ---- Telemetry for each farm ----
-telemetry_normal <- generate_farm_telemetry(
-  farm_df = farm_normal,
-  farm_id = "NY001",
-  deg_rate = 0.005,                 # 0.5%/yr degradation
-  irr_factor_range = c(200, 1000),
-  noise_range = c(0.9, 1.0)
-)
-
-telemetry_bad <- generate_farm_telemetry(
-  farm_df = farm_bad,
-  farm_id = "NY002",
-  deg_rate = 0.015,                 # 1.5%/yr degradation
-  irr_factor_range = c(200, 1000),
-  noise_range = c(0.85, 1.0)
-)
-
-# ---- Save datasets ----
-write.csv(farm_normal, "panel_life_NY001.csv", row.names = FALSE)
-write.csv(farm_bad, "panel_life_NY002.csv", row.names = FALSE)
-write.csv(telemetry_normal, "panel_telemetry_NY001.csv", row.names = FALSE)
-write.csv(telemetry_bad, "panel_telemetry_NY002.csv", row.names = FALSE)
-
-cat("Saved panel_life_NY001.csv, panel_life_NY002.csv, panel_telemetry_NY001.csv, and panel_telemetry_NY002.csv\n")
+# # ---- Generate the two farms ----
+# farm_normal <- generate_farm_data(
+#   farm_id = "NY001",
+#   mean_life = 28, sd_life = 3,
+#   fail_type_probs = c(0.3, 0.2, 0.3, 0.2),  # balanced causes
+#   maint_delay_mean = 365                     # ~1 year maintenance
+# )
+# 
+# farm_bad <- generate_farm_data(
+#   farm_id = "NY002",
+#   mean_life = 20, sd_life = 4,
+#   fail_type_probs = c(0.1, 0.7, 0.1, 0.1),  # mostly Wiring
+#   maint_delay_mean = 800                     # infrequent maintenance
+# )
+# 
+# # ---- Telemetry for each farm ----
+# telemetry_normal <- generate_farm_telemetry(
+#   farm_df = farm_normal,
+#   farm_id = "NY001",
+#   deg_rate = 0.005,                 # 0.5%/yr degradation
+#   irr_factor_range = c(200, 1000),
+#   noise_range = c(0.9, 1.0)
+# )
+# 
+# telemetry_bad <- generate_farm_telemetry(
+#   farm_df = farm_bad,
+#   farm_id = "NY002",
+#   deg_rate = 0.015,                 # 1.5%/yr degradation
+#   irr_factor_range = c(200, 1000),
+#   noise_range = c(0.85, 1.0)
+# )
+# 
+# # ---- Save datasets ----
+# write.csv(farm_normal, "panel_life_NY001.csv", row.names = FALSE)
+# write.csv(farm_bad, "panel_life_NY002.csv", row.names = FALSE)
+# write.csv(telemetry_normal, "panel_telemetry_NY001.csv", row.names = FALSE)
+# write.csv(telemetry_bad, "panel_telemetry_NY002.csv", row.names = FALSE)
+# 
+# cat("Saved panel_life_NY001.csv, panel_life_NY002.csv, panel_telemetry_NY001.csv, and panel_telemetry_NY002.csv\n")

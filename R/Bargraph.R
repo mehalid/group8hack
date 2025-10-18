@@ -52,6 +52,6 @@ Bargraph <- function(input) {
   return(list(plot = gbar, top_failure_type = top_failure_type))
 }
 
-bar = Bargraph(farm_bad)
-bar$plot
-bar$top_failure_type
+# bar = Bargraph(farm_bad)
+# bar$plot
+# bar$top_failure_type
