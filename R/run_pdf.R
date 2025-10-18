@@ -4,6 +4,6 @@
 #   u_plot <- uout$plot
 
 # you already have: stats <- panel_stats(...), and u_plot from your u-chart function
-write_single_page_report(stats, g1,
+write_single_page_report(stats, var$plot,
                          out_pdf = "SolarPanel_ReliabilityReport.pdf",
                          warranty_years = 25)

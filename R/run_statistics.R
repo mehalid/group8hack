@@ -2,18 +2,10 @@
 source("R/statistics.R")
 
 # 2️⃣ Run the function directly on your CSV file
-stats <- panel_stats("R/panel_life_NY001.csv",
+stats <- panel_stats("panel_life_NY001.csv",
                      install_col = "install_date",
                      failure_col = "failure_date",
                      horizons = c(365, 730, 1825))  # 1, 2, and 5 years
-
-rec <- generate_panel_recommendation(stats)
-cat(rec)
-
-
-
-
-
 
 library(dplyr)
 library(ggplot2)
