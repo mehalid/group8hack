@@ -2,3 +2,9 @@
 .Rhistory
 .RData
 .Ruserdata
+Group8.Rcheck/
+Group8*.tar.gz
+Group8*.tgz
+Group8hack.Rcheck/
+Group8hack*.tar.gz
+Group8hack*.tgz

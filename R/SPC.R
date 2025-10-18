@@ -1,3 +1,16 @@
+
+#' @name StatisticalProcessTest 
+#' @title SPC
+#' @description Function to create a control chart of average efficiency 
+#' @author group8
+#' @params input1 = actual power, input 2 = expected power, input3 = timestep.
+#' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
+#' @export
+
+StatisticalProcessTest <- function (input1, input2, input3)
+  
+
+
 #Control Plot functions
 #Outputs: the control plot and the slope of the plot
 

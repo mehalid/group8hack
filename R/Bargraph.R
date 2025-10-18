@@ -1,3 +1,12 @@
+#' @name Bargraph
+#' @title Bargraph
+#' @description Generate a bar graph of the different failure types
+#' @author Group 8
+#' @params input (numeric) vector of 1 or more numeric values.
+#' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
+#' @export
+
+
 #Functions that outputs a bar plot showing the tendencies of each failure type
 #Outputs: the plot and the top failure type (string)
 

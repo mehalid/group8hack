@@ -1,4 +1,10 @@
-
+#' @name make_datasheet
+#' @title make_datasheet
+#' @description Two functions that creates panel life information and telemetry for one farm 
+#' @author group8
+#' @params farm_id, mean_life, sd_life, fail_type_probs, maint_delay_mean, farm_df, farm_id, # deg_rate, irr_factor_range, noise_range
+#' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
+#' @export
 # ---- Helper function to generate panel life info ----
 generate_farm_data <- function(farm_id, mean_life, sd_life, fail_type_probs, maint_delay_mean) {
   library(dplyr)

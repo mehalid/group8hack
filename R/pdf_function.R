@@ -1,3 +1,11 @@
+#' @name pdf_function
+#' @title pdf_function
+#' @description Gathers all the graph and data we generated
+#' @author Group 8, PhD
+#' @params vector or graphs variables from previously used functions
+#' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
+#' @export
+
 library(dplyr)
 library(ggplot2)
 library(ggpubr)
