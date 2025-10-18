@@ -40,27 +40,26 @@ generate_farm_data <- function(farm_id, mean_life, sd_life, fail_type_probs, mai
 
 # ---- Function to generate telemetry for one farm ----
 generate_farm_telemetry <- function(farm_df, farm_id, deg_rate, irr_factor_range, noise_range) {
-  # select a subset of panels
+  # Select a subset of panels
   sample_panels <- sample(farm_df$panel_id, 10)
   
-  # select ~1000 dates evenly spaced from 2020–2025
+  # Select ~100 dates evenly spaced from 2020–2025
   full_days <- seq(as.Date("2020-01-01"), as.Date("2025-01-01"), by = "day")
   sample_days <- full_days[seq(1, length(full_days), length.out = 100)]
   
+  # Generate telemetry data
   telemetry <- expand.grid(
     panel_id = sample_panels,
     timestep = sample_days
   ) %>%
     mutate(
-      ambient_temp_C = runif(n(), 0, 35),
-      solar_irradiance_Wm2 = runif(n(), 200, 1000),
+      solar_irradiance_Wm2 = runif(n(), irr_factor_range[1], irr_factor_range[2]),
       expected_output_kW = 0.5 * (solar_irradiance_Wm2 / 1000),
-      degradation_factor = 1 - deg_rate * ((as.numeric(timestep - min(timestep)))/365),
-      actual_output_kW = expected_output_kW * degradation_factor * runif(n(), noise_range[1], noise_range[2]),
-      adverse_condition = sample(c(0,1), n(), replace=TRUE, prob=c(0.95,0.05))
-    )
+      degradation_factor = 1 - deg_rate * ((as.numeric(timestep - min(timestep))) / 365),
+      actual_output_kW = expected_output_kW * degradation_factor * runif(n(), noise_range[1], noise_range[2])
+    ) %>%
+    select(panel_id, timestep, expected_output_kW, actual_output_kW)  # Keep only required columns
   
-  telemetry <- left_join(telemetry, farm_df[, c("panel_id", "system_id")], by = "panel_id")
   return(telemetry)
 }
 
