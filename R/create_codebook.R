@@ -1,3 +1,12 @@
+#' @name create_codebook
+#' @title create_codebook
+#' @description Function to create the codebook for the readme
+#' @author group8
+#' @params no parameters 
+#' @note Adding `@export` below means this function will become accessible by package users, rather than being an internal-only function.
+#' @export
+
+
 create_codebook <- function() {
   codebook_telemetry <- data.frame(
     Variable = c("panel_id", "timestep", "expected_output_kW", "actual_output_kW"),
