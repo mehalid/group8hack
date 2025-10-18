@@ -76,8 +76,8 @@ The following steps walk through the [`runMe.R`](./R/runMe.R) script, which is a
 
 ## 📕 Codebook  
 <div style="text-align: center;">
-  <img src="pics/plot1.png" width="100%"/>  
-  <img src="pics/plot2.png" width="75%"/>  
+  <img src="pics/plot1.jpg" width="100%"/>  
+  <img src="pics/plot2.jpg" width="75%"/>  
 </div>
 
 
